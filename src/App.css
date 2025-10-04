@@ -1,9 +1,76 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'PaintBrush';
+  src: url('/Fonts/PaintBrushScript-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoLight';
+  src: url('/Fonts/Roboto-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoMedium';
+  src: url('/Fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GilroyMedium ';
+  src: url('/public/Fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GilroyExtraBold ';
+  src: url('/public/Fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme{
+  --font-paintBrush: 'PaintBrush';
+  --font-robotoLight: 'RobotoLight';
+  --font-robotoMedium: 'RobotoMedium';
+  --font-gilroyMedium: 'GilroyMedium';
+  --font-gilroyExtraBold: 'GilroyExtraBold';
+}
+
+@theme{
+  --color-orange: #FC3200;
+  --color-orange-light: #ff735080;
+  --color-orange-medium: #fd6038;
+  --color-green: #053C36;
+  --color-white-light: #F5F5F5;
+  
+}
+
+
 *{
- 
+
   box-sizing: border-box;
 }
 body{
-  background-color: #002428;
+  background-color: #053C36;
+  height: 100%;
+  
+}
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
 }

@@ -6,4 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "/",
+  resolve: {
+    alias: {
+      "@mui/styled-engine": "@mui/styled-engine", // ensure vite picks it up
+    },
+  },
 });

@@ -1,0 +1,67 @@
+{
+  "stays": [
+  {
+    "id": "cottage",
+    "stayName": "Cottage Stay",
+    "stayType": "Mountain Retreat",
+    "description": "Surrounded by the calm of the mountains, our cottages offer a perfect blend of comfort and nature. Wake up to fresh air and scenic views, spend your days exploring the outdoors, and unwind in a cozy space designed for peace and relaxation. Evenings bring the warmth of starlit skies and quiet moments by the fire, making every stay truly unforgettable.",
+    "images": [
+      "https://media1.thrillophilia.com/filestore/hi3mydceupcmb3ra7xrczbchl50r_gorukana4.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/4z03r4mxhqdxv29f2hh5yo16icdl_cottage.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/io5df7529lq522wvng3n2htv838v_gorukana1.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/sg6gam4s4k4s7ueki1vnpkpm4m5i_gorukana3.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/2uq7hcqf5oqmhsgr47n4aifnwqd2_cottage2.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/gapwn0pzh0fd8hlsm0bc7tkkrlze_5.jpg?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/c1myq57slf7s02rhymi6or6koy9i_gorukana9.png?w=auto&h=600",
+      "https://media1.thrillophilia.com/filestore/wp6ctbq2wlr5a5dywxbzv0rjknox_tent%20stay1.png?w=auto&h=600"
+    ]
+  },
+  {
+    "id": "camping",
+    "stayName": "Camping Tent Stay",
+    "stayType": "Twilight Tent",
+    "description": "Experience the raw beauty of nature in our twilight tents, designed for the true adventure spirit. Fall asleep beneath endless skies, with the sounds of the forest wrapping you in calm. Simple yet cozy, these stays connect you directly to the wilderness, making nights under the stars unforgettable.",
+    "images": [
+      "https://www.mass.gov/files/styles/embedded_full_width/public/images/2019-06/mylessized.png?itok=h1AZwa5V",
+      "https://www.mass.gov/files/styles/embedded_full_width/public/images/2019-05/haroldparker_sized.png?itok=M0enGmyJ",
+      "https://www.mass.gov/files/styles/embedded_full_width/public/images/2019-06/beartownsized.png?itok=t7OcUJKy",
+      "https://media.campsaround.com/mainweb/wp-content/uploads/elementor/thumbs/Camping-Guide-For-Beginners-Things-You-Must-Know-Before-You-Go-Camping-qba0ht61e1j66skcprk1o33vs0q6uao1vbtwalosq8.png",
+      "https://www.rochesterford.com/blogs/2752/wp-content/uploads/2021/05/6_Tips_for_Camping_at_Oxbow_Park_Near_Rochester_637358650707632192.png",
+      "https://patch.com/img/cdn20/users/22881893/20190320/111725/styles/raw/public/processed_images/nagawaukee_tent-1553095007-1802.jpg?width=1200",
+      "https://www.campmaster.co.za/storage/2023/09/Camping-101-South-Africa-7-1024x576.webp",
+      "https://admin.onlyinyourstate.com/wp-content/uploads/sites/2/2023/08/Screen-Shot-2023-08-30-at-11.04.57-AM.png?w=768"
+    ]
+  },
+  {
+    "id": "glamping",
+    "stayName": "Glamping Pod Stay",
+    "stayType": "Forest Escape",
+    "description": "Blending the charm of the outdoors with modern comfort, our glamping pods are the perfect escape. Tucked amidst greenery, they offer a snug retreat without losing touch with nature’s magic. Enjoy the quiet, breathe fresh mountain air, and let every sunrise remind you of life’s simple beauty.",
+    "images": [
+      "https://images.squarespace-cdn.com/content/v1/59cbec3acf81e074233c1905/04a199aa-4ec7-4e2e-b598-2cdb2fd24775/Guests+at+Pod+3.jpg?format=1000w",
+      "https://images.squarespace-cdn.com/content/v1/59cbec3acf81e074233c1905/1617646986835-NBLLLOX0BN9ZUOPYX6JO/Twin+Pod+Interior+-+4+built-in+beds+in+a+domed+room+with+a%2Fc+in+back+wall?format=1000w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/c3a6fcea-1392-4594-904f-ebbe66d533f9/rear+bathroom+main+room.jpg?format=750w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/2ca11035-d648-4522-ad04-680ef8ee2842/IMG_7734.jpg?format=1000w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/ca1253a0-6ed6-45bd-a8fb-c26f82fc3c4d/IMG_7725.jpeg?format=750w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/c5cf7db6-c84e-41a5-8e83-3e987d7a9772/Mega+Pods+at+Iris+Hill+Glamping.jpg?format=750w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/bc8f8408-b5da-4250-a8d8-7686765b18d1/falcon-forest-glamping-north-east-england-north-yorkshire-large.jpg?format=1000w",
+      "https://images.squarespace-cdn.com/content/v1/678564eb7fb92d420df9379f/789534f6-9d8f-4811-959f-eac5e5dd3cb3/147b338c-f92d-4f57-817c-6c6933cd2acd.jpg?format=750w"
+    ]
+  },
+  {
+    "id": "ecoLodge",
+    "stayName": "Eco Lodge Stay",
+    "stayType": "Lakeside Cabin",
+    "description": "Set along the gentle edge of the lake, our eco lodges are built to harmonize with nature. Crafted from sustainable materials, they offer both comfort and conscience. Wake to birdsong, sip coffee by tranquil waters, and cherish evenings of peace under the glow of lantern light.",
+    "images": [
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/12/el-silencio.jpg.avif",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Copa-de-arbol-cabin-768x512.jpg.avif",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Lapa-Rios-Ecolodge-Matapalo-Suite.jpg",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Lapa-Rios-Ecolodge-Osa.jpg.avif",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Lapa-Rios-Ecolodge-Premier-Villas.jpg",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Lapa-Rios-Ecolodge-Deluxe-Bungalow.jpg",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Lapa-Rios-Ecolodge-Lapa-Villas.jpg",
+      "https://d1cq5bmaro4ubb.cloudfront.net/wp-content/uploads/2024/11/Copa-de-Arbol-Beach-Rainforest-Resort-rooms.jpg.avif"
+    ]
+  }
+]}

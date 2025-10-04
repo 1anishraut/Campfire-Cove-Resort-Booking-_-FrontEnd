@@ -1,0 +1,55 @@
+{
+  "Adventure": [
+    {
+      "id": "rock",
+      "stayName": "Outdoor",
+      "stayType": "Rock Climbing",
+      "description": "Challenge yourself by scaling rock walls that test your strength, endurance, and focus. Perfect for both beginners and seasoned climbers, it’s an exciting way to push your limits while enjoying the outdoors.",
+      "images": [
+        "https://avid4.com/wp-content/uploads/2015/01/AVID_Marin17_248.jpg",
+        "https://www.mammut.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fl595fda2nfqd%2F7wvg9ZpZHBe0U5HdYbGmhs%2Fd6104377d80196c9094c760d93becc82%2FPerformance-Climbing_SS24_Cervinia_025-min.jpg&w=1024&q=75",
+        "https://images.squarespace-cdn.com/content/v1/6047eb6caf3c4a6b10e9a529/1713487206924-8C9P323A8EQXZ1U7W486/image-asset.jpeg?format=1500w",
+        "https://images.squarespace-cdn.com/content/v1/6047eb6caf3c4a6b10e9a529/1701299699775-3BJ46NVUC1ZORWD7D1W9/CORAX-BOREA-DJINN%2BAXESS-CONNECT%2BADJUST-GRIGRI%252B%25C2%25A92021-PETZL%2BDISTRIBUTION-Marc%2BDaviet_1326_22_LD_AL.jpg?format=1500w",
+        "https://www.mammut.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fl595fda2nfqd%2F5TIx9eXcEJ7xX08EQKn2l5%2F917d1b371de8c37aa4c13052871ac8bd%2FPerformance-Climbing_SS24_Cervinia_009-min.jpg&w=1024&q=75",
+        "https://images.squarespace-cdn.com/content/v1/6047eb6caf3c4a6b10e9a529/822a6e0c-8b91-4b77-8614-d95281314629/IMG_3351%2B%281%29-min.jpg?format=1500w",
+        "https://media.cntraveler.com/photos/5f30886e01aedaf2771c6399/16:9/w_1600,c_limit/Bouldering-GettyImages-1199646674.jpg",
+        "https://www.mammut.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fl595fda2nfqd%2F68u5nBRR8Zkj8hCFd34UeB%2F56fbec36d42332fb15b43ba41a9616f5%2FComfort-Climbing_SS24_Cervinia_030-min.jpg&w=1536&q=75"
+      ]
+    },
+    {
+      "id": "ziplining",
+      "stayName": "Outdoor",
+      "stayType": "Ziplining",
+      "description": "Glide through the air at exhilarating speeds as you zip across lush forests and open landscapes. A safe yet thrilling aerial adventure that gives you a bird’s-eye view of nature.",
+      "images": [
+        "https://cdn.prod.website-files.com/626bd005d273233572633404/65cd383c43bad5e459c1c57f_Zipline-safety.jpg",
+        "https://ziplinemunnar.com/wp-content/uploads/2024/09/DSC07679-copy.webp",
+        "https://cdn.prod.website-files.com/626bd005d273233572633404/626bd005d273238f956334f0_18020547184_5008746007_k-1024x680.jpeg",
+        "https://cdn.img.gen.in/assets/Business/10589/GalleryImage/18285/10589_638351834060505896115039.jpg?rendered=true",
+        
+        "https://cdn.prod.website-files.com/626bd005d273233572633404/626bd005d273236a016334eb_18702350628_6a125dbfa7_k-1024x680.jpeg",
+
+        "https://cdn.prod.website-files.com/626bd005d273233572633404/626bd005d27323a3f36334ec_17323039961_b6b351e803_k-1024x686.jpeg",
+        "https://cdn.img.gen.in/assets/Business/10589/Feeds/7966/10589_638610304268746371124836.jpg?rendered=true",
+        "https://cdn.img.gen.in/assets/Business/10589/GalleryImage/18285/10589_638351834062136978126067.jpg?rendered=true",
+        "https://ziplinemunnar.com/wp-content/uploads/2024/09/DSC08203-copy.webp"
+      ]
+    },
+    {
+      "id": "biking",
+      "stayName": "Outdoor",
+      "stayType": "Mountain Biking",
+      "description": "Ride through rugged trails and scenic mountain paths on an adrenaline-pumping biking adventure. Perfect for thrill-seekers who love speed, endurance, and exploring the outdoors.",
+      "images": [
+        "https://www.oberoihotels.com/-/media/oberoi-hotel/wild-flower-hall-new/experiences/desktop1024x706/mountain_biking.jpg",
+        "https://doorcountypulse.com/wp-content/uploads/2025/08/Pen-Park-Trails-Fall-2024-BK1-1-660x440.jpg",
+        "https://doorcountypulse.com/wp-content/uploads/2025/08/BearBumpsMtnBikeTrail_250722_EleanorCorbin-1-1024x768.jpg",
+        "https://www.panoramaresort.com/assets/Bike-Park/pano-mtb-june29-95-2__FocusFillWyIwLjAwIiwiMC4wMCIsMTgwMCwxMDgwXQ.jpg",
+        "https://www.panoramaresort.com/assets/Bike-Park/PMR-mtb-june29-178-2000__FocusFillWyIwLjAwIiwiMC4wMCIsMTgwMCwxMDgwXQ.jpg",
+        "https://www.panoramaresort.com/assets/Bike-Park/PMR-mtb-june29-188-2000__FocusFillWyIwLjAwIiwiMC4wMCIsMTgwMCwxMDgwXQ.jpg",
+        "https://www.panoramaresort.com/assets/Bike-Park/PMR-mtb-june29-28-2000__FocusFillWyIwLjAwIiwiMC4wMCIsMTgwMCwxMDgwXQ.jpg",
+        "https://pedaladventures.com/wp-content/uploads/2018/08/IMG_3308.jpg"
+      ]
+    }
+  ]
+}
