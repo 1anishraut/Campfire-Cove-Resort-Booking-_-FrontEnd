@@ -7,7 +7,7 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import { AiFillDatabase } from "react-icons/ai";
-import logo from "../../Assets/Images/pngegg (1).png";
+import logo from "../../assets/images/pngegg (1).png";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../Utils/Constants";
 import axios from "axios";
