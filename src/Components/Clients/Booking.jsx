@@ -42,8 +42,8 @@ const Booking = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const bookingData = {
-      checkIn,
-      checkOut,
+      checkin,
+      checkout,
       fullName,
       emailId,
       contact,
@@ -52,7 +52,7 @@ const Booking = () => {
       amount,
       guests,
     };
-    // console.log(bookingData);
+    console.log(bookingData);
     setStep2(true);
   };
   //  Fetch rooms
@@ -99,8 +99,8 @@ const Booking = () => {
   };
 
   const bookingData = {
-    checkIn,
-    checkOut,
+    checkIn : checkIn || checkin,
+    checkOut : checkOut || checkout,
     fullName,
     emailId,
     contact,
@@ -109,11 +109,13 @@ const Booking = () => {
     amount,
     guests,
   };
+  console.log(bookingData);
+  
 
   const createBooking = async (bookingData) => {
     try {
       const res = await axios.post(`${BASE_URL}/booking/create`, bookingData);
-      // console.log("Booking created:", res.data);
+      console.log("Booking created:", res.data);
       setBookingId(res.data._id);
 
       findBookingById(res.data._id);
