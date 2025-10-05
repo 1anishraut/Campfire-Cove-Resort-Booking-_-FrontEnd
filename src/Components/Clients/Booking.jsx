@@ -385,7 +385,7 @@ const Booking = () => {
         {step3 && (
           <button
             onClick={() => createBooking(bookingData)}
-            className="bg-green-500 hover:scale-105 hover:text-black hover:shadow-xl shadow-black text-white px-12 py-3 rounded-lg shadow transition-all duration-300 cursor-pointer"
+            className="bg-orange text-xl shadow-lg hover:shadow-green font-robotoLight hover:scale-105  text-white px-12 py-3 rounded-lg transition-all duration-300 cursor-pointer"
           >
             Create Booking
           </button>

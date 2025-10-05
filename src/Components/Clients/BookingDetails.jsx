@@ -33,7 +33,7 @@ function BookingDetails({ bookingDetails, createPayment, bookingId }) {
   const savings = originalPrice - grandTotal;
 
   return (
-    <div className="max-w-md w-full border rounded-lg shadow-md p-6 bg-white space-y-4">
+    <div className="max-w-md w-full rounded-lg shadow-2xl shadow-green p-6 bg-white space-y-4">
       {/* Dates & Nights */}
       <div className="grid grid-cols-2 border-b pb-2">
         <div>

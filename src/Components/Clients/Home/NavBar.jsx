@@ -91,7 +91,7 @@ const NavBar = () => {
               );
             })}
             <NavLink
-              to="/book"
+              to="/booking"
               className="w-full text-center border-2 border-orange  text-white px-5 py-2 rounded-full transition"
               onClick={() => setOpen(false)}
             >
