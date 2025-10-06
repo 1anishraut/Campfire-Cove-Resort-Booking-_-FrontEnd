@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../Utils/Constants";
+import { toast } from "react-toastify";
 
 const AddNewMeal = ({ setIsModalOpen }) => {
   const [mealName, setMealName] = useState("");
@@ -25,85 +26,109 @@ const AddNewMeal = ({ setIsModalOpen }) => {
         },
         { withCredentials: true }
       );
-      window.location.reload();
-      alert("Meal added successfully!");
+      toast.success("New Meal edited successfully!");
+            setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
       console.error("Error adding meal:", error);
-      alert("Failed to add meal. Make sure you are logged in as admin.");
+      toast.error("Error editing");
     }
   };
 
   return (
-    <div
-      
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-xs  text-white"
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-xs  text-white font-robotoLight">
       <form
-        className="bg-[#002428] p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
+        className="bg-[#002428] p-6 rounded-md shadow-md w-full max-w-md  max-h-[90vh]"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-xl font-bold mb-4">Add New Meal</h2>
+        <h2 className="text-xl font-bold mb-4 text-white">Add New Meal</h2>
 
-        <input
-          type="text"
-          name="mealName"
-          placeholder="Meal Name"
-          value={mealName}
-          onChange={(e) => setMealName(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Meal Name */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Meal Name</label>
+          <input
+            type="text"
+            name="mealName"
+            value={mealName}
+            onChange={(e) => setMealName(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          name="mealPrice"
-          placeholder="Meal Price"
-          value={mealPrice}
-          onChange={(e) => setMealPrice(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Meal Price */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Meal Price (₹)</label>
+          <input
+            type="number"
+            name="mealPrice"
+            value={mealPrice}
+            min="0"
+            onChange={(e) => setMealPrice(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <input
-          type="text"
-          name="mealImage"
-          placeholder="Meal Image URL"
-          value={mealImage}
-          onChange={(e) => setMealImage(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Meal Image */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Meal Image URL</label>
+          <input
+            type="text"
+            name="mealImage"
+            value={mealImage}
+            onChange={(e) => setMealImage(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="mealCategory"
-          placeholder="Meal Category (e.g. Breakfast, Dinner)"
-          value={mealCategory}
-          onChange={(e) => setMealCategory(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Meal Category */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">
+            Meal Category (e.g. Breakfast, Dinner)
+          </label>
+          <input
+            type="text"
+            name="mealCategory"
+            value={mealCategory}
+            onChange={(e) => setMealCategory(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <select
-          name="mealType"
-          value={mealType}
-          onChange={(e) => setMealType(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        >
-          <option value="Veg">Veg</option>
-          <option value="Non Veg">Non Veg</option>
-        </select>
+        {/* Meal Type */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Meal Type</label>
+          <select
+            name="mealType"
+            value={mealType}
+            onChange={(e) => setMealType(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none bg-[#002428] text-white"
+            required
+          >
+            <option value="Veg">Veg</option>
+            <option value="Non Veg">Non Veg</option>
+          </select>
+        </div>
 
-        <select
-          name="cuisine"
-          value={cuisine}
-          onChange={(e) => setCuisine(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        >
-          <option value="">Select Cuisine</option>
-          <option value="Indian">Indian</option>
-          <option value="Chinese">Chinese</option>
-        </select>
+        {/* Cuisine */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Cuisine</label>
+          <select
+            name="cuisine"
+            value={cuisine}
+            onChange={(e) => setCuisine(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none bg-[#002428] text-white"
+            required
+          >
+            <option value="">Select Cuisine</option>
+            <option value="Indian">Indian</option>
+            <option value="Chinese">Chinese</option>
+          </select>
+        </div>
 
-        <div className="flex justify-between mx-10 gap-6">
+        {/* Buttons */}
+        <div className="flex justify-between mx-10 gap-6 mt-4">
           <button
             type="button"
             onClick={() => setIsModalOpen(false)}

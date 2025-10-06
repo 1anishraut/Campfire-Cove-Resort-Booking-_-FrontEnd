@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../Utils/Constants";
 import { MdDeleteSweep } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const AllBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [dateSort, setDateSort] = useState("newest"); // newest | oldest | today
-  const [statusFilter, setStatusFilter] = useState("all"); // all | pending_payment | confirmed
+  const [dateSort, setDateSort] = useState("newest"); 
+  const [statusFilter, setStatusFilter] = useState("all"); 
 
   const fetchBookings = async () => {
     try {
@@ -26,8 +27,10 @@ const AllBookings = () => {
         withCredentials: true,
       });
       setBookings((prev) => prev.filter((b) => b._id !== id));
+      toast.success("Deleted successfully!");
     } catch (err) {
       console.error("Error deleting booking:", err);
+      toast.error("Error editing");
     }
   };
 
@@ -75,7 +78,7 @@ const AllBookings = () => {
   }
 
   return (
-    <div className="relative px-4">
+    <div className="relative px-4 font-robotoLight">
       {/* Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-4">
         {/* Search */}
@@ -188,7 +191,7 @@ const AllBookings = () => {
             <button
               onClick={() => deleteBooking(b._id)}
               className="absolute top-2 right-2 flex items-center gap-1 bg-red-500 hover:bg-red-600
-                         text-white text-sm px-3 py-1 rounded transition-all duration-200"
+                         text-white text-sm px-3 py-1 rounded transition-all duration-200 cursor-pointer"
             >
               <MdDeleteSweep size={18} /> Delete
             </button>

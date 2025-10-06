@@ -87,7 +87,7 @@ const AvailableRoomAdv = ({
                     <h1 className="text-2xl font-semibold text-gray-800 mb-2">
                       {room.roomName}
                     </h1>
-                    <p>{room.roomSize}</p>
+                    <p>{room.roomSize} sq.ft</p>
                     <div className="flex items-center gap-2 text-xs">
                       <p className="border border-orange-medium rounded-full px-2 bg-orange-light">
                         NON REFUNDABLE

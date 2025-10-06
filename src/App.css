@@ -74,3 +74,12 @@ body{
   -ms-overflow-style: none;  
   scrollbar-width: none;     
 }
+input:focus {
+  outline: none;
+}
+select:focus{
+  outline: none;
+}
+textarea:focus{
+  outline: none;
+}

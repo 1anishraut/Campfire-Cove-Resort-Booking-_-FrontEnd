@@ -8,6 +8,10 @@ import BookingDetails from "./BookingDetails";
 import AvailableRoomAdv from "./AvailableRoomAdv";
 import jsPDF from "jspdf";
 // import logo from "../../../src/assets/images/pngegg (1).png";
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Booking = () => {
 
@@ -34,6 +38,8 @@ const Booking = () => {
   const [bookingDetails, setBookingDetails] = useState(null);
   const [KEY_ID, setKEY_ID] = useState(null);
 
+  const [error, setError]= useState("")
+
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.stay);
   const adventures = useSelector((state) => state.adventure);
@@ -41,6 +47,14 @@ const Booking = () => {
   //  Handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const checkInDate = new Date(checkin);
+    const checkOutDate = new Date(checkout);
+
+    if (checkOutDate <= checkInDate) {
+      setError("Check-out must be after check-in");
+      return
+    }
     const bookingData = {
       checkin,
       checkout,
@@ -48,11 +62,10 @@ const Booking = () => {
       emailId,
       contact,
       roomId,
-
       amount,
       guests,
     };
-    console.log(bookingData);
+    // console.log(bookingData);
     setStep2(true);
   };
   //  Fetch rooms
@@ -109,13 +122,13 @@ const Booking = () => {
     amount,
     guests,
   };
-  console.log(bookingData);
+  // console.log(bookingData);
   
 
   const createBooking = async (bookingData) => {
     try {
       const res = await axios.post(`${BASE_URL}/booking/create`, bookingData);
-      console.log("Booking created:", res.data);
+      // console.log("Booking created:", res.data);
       setBookingId(res.data._id);
 
       findBookingById(res.data._id);
@@ -257,74 +270,98 @@ const Booking = () => {
       );
     }
   };
+  const formatLocalDate = (date) => {
+    if (!date) return "";
+    const offset = date.getTimezoneOffset();
+    const localDate = new Date(date.getTime() - offset * 60 * 1000);
+    return localDate.toISOString().split("T")[0];
+  };
 
   return (
     <>
-      <div className="mt-18 flex flex-col items-center px-4 py-8   w-full  gap-8 bg-[#053c366b]">
+      <div className="bg-[#053c366b] absolute h-full w-full -z-1"></div>
+      <div className="mt-18 flex flex-col items-center px-4 py-8  w-full  gap-8 ">
         {/* Booking Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white w-full max-w-[1200px] rounded-2xl p-8 flex flex-col gap-4 shadow-lg "
+          className="bg-white w-full max-w-[1200px] rounded-2xl p-8 flex flex-col gap-4 shadow-lg font-robotoLight"
         >
           <h2 className="text-2xl font-semibold text-center text-gray-800">
             Book Your Stay
           </h2>
 
-          <div className="flex justify-between border-2 border-dashed p-4 rounded-lg ">
+          <div className="flex justify-between border-2 border-dashed border-green p-4 rounded-lg">
             {/* Check-in Date */}
-            <div className="border-r-2 border-dashed w-1/2 px-4">
+            <div className="border-r-2 border-dashed border-green w-1/2 px-4 flex flex-col md:flex-row  md:items-center md:justify-center md:gap-4">
               <label className="block mb-1 text-gray-700 text-nowrap">
                 Check-in Date
               </label>
-              <input
-                type="date"
-                value={checkin || checkIn}
-                onChange={(e) => setCheckin(e.target.value)}
-                className="w-full border rounded-lg p-2 focus:ring-2  outline-none"
+              <DatePicker
+                selected={
+                  checkin
+                    ? new Date(checkin)
+                    : checkIn
+                    ? new Date(checkIn)
+                    : null
+                }
+                onChange={(date) => setCheckin(formatLocalDate(date))}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="Select Check-in Date"
+                className="w-full border rounded-lg p-2 border-gray-400 outline-none"
                 required
+                minDate={new Date()}
               />
             </div>
 
             {/* Check-out Date */}
-            <div className="w-1/2 px-4">
+            <div className="w-1/2 px-4 flex flex-col md:flex-row  md:items-center md:justify-center md:gap-4 ">
               <label className="block mb-1 text-gray-700 text-nowrap">
                 Check-out Date
               </label>
-              <input
-                type="date"
-                value={checkout || checkOut}
-                onChange={(e) => setCheckout(e.target.value)}
-                className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"
+              <DatePicker
+                selected={
+                  checkout
+                    ? new Date(checkout)
+                    : checkOut
+                    ? new Date(checkOut)
+                    : null
+                }
+                onChange={(date) => setCheckout(formatLocalDate(date))}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="Select Check-out Date"
+                className="w-full border rounded-lg p-2 border-gray-400 outline-none"
                 required
+                minDate={checkin ? new Date(checkin) : new Date()}
               />
             </div>
           </div>
 
           <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-8">
-            <div className="flex gap-4 lg:gap-8 justify-between  lg:w-1/2">
+            <div className="flex gap-4 lg:gap-8   lg:w-1/2">
               {/* Guests */}
-              <div className="w-[100px] lg:w-1/2 ">
+              <div className="w-[20%] lg:w-1/2 ">
                 <label className="block mb-1 text-gray-700">Guests</label>
                 <input
                   type="number"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
                   min="1"
-                  className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="w-full border rounded-lg p-2 border-gray-400  outline-none"
                   required
                 />
               </div>
 
               {/* Full Name */}
-              <div className=" lg:w-1/2">
+              <div className="md:w-[80%] lg:w-1/2 ">
                 <label className="block mb-1 text-gray-700">Full Name</label>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Enter your full name"
-                  className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="w-full border rounded-lg p-2 border-gray-400  outline-none"
                   required
+                  maxLength="60"
                 />
               </div>
             </div>
@@ -338,7 +375,7 @@ const Booking = () => {
                   value={emailId}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"
+                  className="w-full border rounded-lg p-2 border-gray-400  outline-none"
                   required
                 />
               </div>
@@ -348,17 +385,40 @@ const Booking = () => {
                 <label className="block mb-1 text-gray-700">
                   Contact Number
                 </label>
-                <input
-                  type="tel"
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                  placeholder="Enter your phone number"
-                  className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"
-                  required
-                />
+                <div className="border border-gray-400 rounded-lg  transition">
+                  <PhoneInput
+                    country={"in"}
+                    disableCountryGuess={true}
+                    value={contact}
+                    onChange={(value) => setContact(`+${value}`)}
+                    inputProps={{
+                      name: "phone",
+                      required: true,
+                      autoFocus: false,
+                    }}
+                    inputStyle={{
+                      width: "100%",
+                      border: "none",
+                      outline: "none",
+                      padding: "10px 16px",
+                      borderRadius: "8px",
+                      backgroundColor: "transparent",
+                      paddingLeft: "52px",
+                    }}
+                    buttonStyle={{
+                      border: "none",
+                      background: "transparent",
+                      paddingLeft: "10px",
+                    }}
+                    containerStyle={{
+                      width: "100%",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
+          <p className="text-sm text-red-600 self-center">{error}</p>
 
           {/* Next Button */}
           <button

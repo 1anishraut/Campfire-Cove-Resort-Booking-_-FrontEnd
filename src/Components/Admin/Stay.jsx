@@ -7,6 +7,7 @@ import Chart from "./Chart";
 import EditStay from "./EditStay";
 import { MdDeleteSweep } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Stay = () => {
   const [editId, setEditId] = useState(null); 
@@ -31,16 +32,21 @@ const Stay = () => {
     fetchStayData();
   }, [dispatch]);
 
+
+        // DELETE stay 
+
   const deleteStay = async (id) => {
     try {
-      const res = await axios.delete(BASE_URL + "/admin/deleteStay/" + id , {
+      await axios.delete(BASE_URL + "/admin/deleteStay/" + id , {
         withCredentials: true,
       })
-      window.location.reload();
+      toast.success("Room deleted successfully!");
+      setTimeout(() => window.location.reload(), 1500);
 
   }
   catch (error) {
     console.error("Error deleting stay:", error);
+    toast.error("Failed to delete Stay.!");
   }
 }
 
@@ -49,7 +55,7 @@ const Stay = () => {
   );
 
   return (
-    <div className="relative">
+    <div className="relative font-robotoLight">
       <Chart stayData={stayData} availableRooms={availableRooms} />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 mt-3 pb-10">
         {stayData.map((stay) => (
@@ -114,7 +120,8 @@ const Stay = () => {
               </div>
             </div>
             {editId === stay._id && (
-              <EditStay stay={stay}
+              <EditStay
+                stay={stay}
                 setIsEditOpen={() => setEditId(null)}
                 id={stay._id}
                 NameHead={stay.roomName}

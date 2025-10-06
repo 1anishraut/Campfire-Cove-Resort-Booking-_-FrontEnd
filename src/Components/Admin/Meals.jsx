@@ -8,6 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import EditMeal from "./EditMeal";
 import AddNewStay from "./AddNewStay";
 import AddNewMeal from "./AddNewMeal";
+import { toast } from "react-toastify";
 
 const Meals = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,6 +25,8 @@ const Meals = () => {
       const res = await axios.get(BASE_URL + "/admin/listMeals", {
         withCredentials: true,
       });
+      console.log(res.data);
+
       dispatch(addMeals(res?.data));
     } catch (error) {
       console.error("Error fetching meals:", error);
@@ -36,26 +39,36 @@ const Meals = () => {
 
   const deleteMeal = async (id) => {
     try {
-      await axios.delete(BASE_URL + "/admin/deleteMeal/" + id, {withCredentials: true} )
-      window.location.reload();
-    }catch (error) {
+      await axios.delete(BASE_URL + "/admin/deleteMeal/" + id, {
+        withCredentials: true,
+      });
+      toast.success("Deleted successfully!");
+            setTimeout(() => window.location.reload(), 1500);
+    } catch (error) {
       console.error("Error deleting meal:", error);
+      toast.error("Error deleting meal");
     }
-  }
+  };
+  // console.log(mealsData);
+  // Get the array of meals safely
+  const mealsArray = Array.isArray(mealsData)
+    ? mealsData
+    : mealsData?.meals || [];
 
   // Search and FILTER
-  const filteredMeals = mealsData.filter((meal) => {
+  const filteredMeals = mealsArray.filter((meal) => {
     const matchesCuisine =
-      selectedCuisine === "All" || meal.cuisine === selectedCuisine;
-    const matchesSearch = meal.mealName
+      selectedCuisine === "All" ||
+      (meal.cuisine || "").toLowerCase() === selectedCuisine.toLowerCase();
+    const matchesSearch = (meal.mealName || "")
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     return matchesCuisine && matchesSearch;
   });
 
   return (
-    <div className="relative">
-      <div className="px-4 flex flex-col md:flex-row gap-4 items-center justify-between py-2 mb-8">
+    <div className="relative font-robotoLight">
+      <div className="px-4 flex flex-col md:flex-row gap-4 items-center justify-between py-2 mb-8 ">
         <button
           onClick={() => setIsModalOpen(true)}
           className="rounded-md bg-[#FC3200] px-4 py-2 hover:scale-105 transition-all duration-300 cursor-pointer text-white"
@@ -154,19 +167,17 @@ const Meals = () => {
             </div>
 
             {/* Add new Meal  */}
-            {isModalOpen && (
-              <AddNewMeal setIsModalOpen={setIsModalOpen} />
-            )}
+            {isModalOpen && <AddNewMeal setIsModalOpen={setIsModalOpen} />}
 
             {/* Edit Modal */}
             {editId === meal._id && (
-              <EditMeal meal={meal}
+              <EditMeal
+                meal={meal}
                 setIsEditOpen={() => setEditId(null)}
                 id={meal._id}
                 NameHead={meal.mealName}
               />
             )}
-
           </div>
         ))}
       </div>

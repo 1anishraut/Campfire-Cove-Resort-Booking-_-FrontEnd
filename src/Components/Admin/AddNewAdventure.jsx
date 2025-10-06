@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../Utils/Constants";
+import { toast } from "react-toastify";
 
 const AddNewAdventure = ({ setIsModalOpen }) => {
   const [advName, setAdvName] = useState("");
@@ -21,60 +22,85 @@ const AddNewAdventure = ({ setIsModalOpen }) => {
         },
         { withCredentials: true }
       );
-      window.location.reload();
-      alert("Adventure added successfully!");
+      
+      toast.success("Adventure added successfully!");
+            setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
       console.error("Error adding adventure:", error);
-      alert("Failed to add adventure. Make sure you are logged in as admin.");
+      toast.error("Error adding adventure");
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-xs text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-xs text-white font-robotoLight">
       <form
-        className="bg-[#002428] p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
+        className="bg-[#002428]/90 p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
         onSubmit={handleSubmit}
       >
         <h2 className="text-xl font-bold mb-4">Add New Adventure</h2>
 
-        <input
-          type="text"
-          name="advName"
-          placeholder="Adventure Name"
-          value={advName}
-          onChange={(e) => setAdvName(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Adventure Name */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Adventure Name
+          </label>
+          <input
+            type="text"
+            name="advName"
+            value={advName}
+            onChange={(e) => setAdvName(e.target.value)}
+            className="w-full border p-2 rounded outline-none "
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          name="advPrice"
-          placeholder="Adventure Price"
-          value={advPrice}
-          onChange={(e) => setAdvPrice(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Adventure Price */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Price (₹)
+          </label>
+          <input
+            type="number"
+            name="advPrice"
+            value={advPrice}
+            onChange={(e) => setAdvPrice(e.target.value)}
+            className="w-full border p-2 rounded outline-none "
+            required
+            min="0"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="advImage"
-          placeholder="Adventure Image URL"
-          value={advImage}
-          onChange={(e) => setAdvImage(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Adventure Image */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Image URL
+          </label>
+          <input
+            type="text"
+            name="advImage"
+            value={advImage}
+            onChange={(e) => setAdvImage(e.target.value)}
+            className="w-full border p-2 rounded outline-none "
+            
+          />
+        </div>
 
-        <textarea
-          name="advDescription"
-          placeholder="Adventure Description"
-          value={advDescription}
-          onChange={(e) => setAdvDescription(e.target.value)}
-          className="mb-3 w-full border p-2 rounded min-h-[100px]"
-          required
-        />
+        {/* Adventure Description */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Description
+          </label>
+          <textarea
+            name="advDescription"
+            value={advDescription}
+            onChange={(e) => setAdvDescription(e.target.value)}
+            className="w-full border p-2 rounded outline-none "
+            rows="3"
+            required
+          />
+        </div>
 
+        {/* Buttons */}
         <div className="flex justify-between mx-10 gap-6">
           <button
             type="button"
@@ -86,7 +112,7 @@ const AddNewAdventure = ({ setIsModalOpen }) => {
 
           <button
             type="submit"
-            className="w-1/2 bg-[#FC3200] text-white px-4 py-2 rounded hover:bg-[#fc32009a] transition-all duration-300 cursor-pointer"
+            className="w-1/2 bg-orange text-white px-4 py-2 rounded hover:bg-[#fc32009a] transition-all duration-300 cursor-pointer"
           >
             Add Adventure
           </button>

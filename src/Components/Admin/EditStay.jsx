@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../Utils/Constants";
+import { toast } from "react-toastify";
 
 const EditStay = ({ setIsEditOpen, NameHead, id, stay }) => {
   const [stayPrice, setStayPrice] = useState("");
@@ -9,7 +10,7 @@ const EditStay = ({ setIsEditOpen, NameHead, id, stay }) => {
   const [stayDescription, setStayDescription] = useState("");
   const [stayStatus, setStayStatus] = useState("Available");
 
-  // ✅ Pre-fill with existing stay data when `stay` changes
+  // Pre-fill with existing stay data when `stay` changes
   useEffect(() => {
     if (stay) {
       setStayPrice(stay.roomPrice || "");
@@ -34,67 +35,93 @@ const EditStay = ({ setIsEditOpen, NameHead, id, stay }) => {
         },
         { withCredentials: true }
       );
-      window.location.reload();
+      toast.success("Stay edited successfully!");
+      setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
       console.error("Error updating stay:", error);
+      toast.error("Error editing");
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm text-white font-robotoLight">
       <form
-        className="bg-[#002428]/90 p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
+        className="bg-[#002428]/90 p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh] scrollbar-hide"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-xl font-bold mb-4">
+        <h2 className="text-xl font-bold mb-4 text-white">
           Edit Stay <br /> {NameHead}
         </h2>
 
-        <input
-          type="number"
-          name="roomPrice"
-          placeholder="Room Price"
-          value={stayPrice}
-          onChange={(e) => setStayPrice(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Price */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Price (₹)</label>
+          <input
+            type="number"
+            name="roomPrice"
+            value={stayPrice}
+            min="0"
+            onChange={(e) => setStayPrice(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none text-white bg-transparent"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="roomImage"
-          placeholder="Room Image URL"
-          value={stayImage}
-          onChange={(e) => setStayImage(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Image */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Image URL</label>
+          <input
+            type="text"
+            name="roomImage"
+            value={stayImage}
+            onChange={(e) => setStayImage(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none text-white bg-transparent"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="roomSize"
-          placeholder="Room Size"
-          value={staySize}
-          onChange={(e) => setStaySize(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Size */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">
+            Room Size ( sq.ft ){" "}
+          </label>
+          <input
+            type="text"
+            name="roomSize"
+            value={staySize}
+            onChange={(e) => setStaySize(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none text-white bg-transparent"
+          />
+        </div>
 
-        <textarea
-          name="roomDescription"
-          placeholder="Room Description"
-          value={stayDescription}
-          onChange={(e) => setStayDescription(e.target.value)}
-          className="mb-3 w-full border p-2 rounded min-h-[100px]"
-        />
+        {/* Room Description */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Description</label>
+          <textarea
+            name="roomDescription"
+            value={stayDescription}
+            onChange={(e) => setStayDescription(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none text-white bg-transparent min-h-[100px]"
+          />
+        </div>
 
-        <select
-          name="roomStatus"
-          value={stayStatus}
-          onChange={(e) => setStayStatus(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        >
-          <option value="Available">Available</option>
-          <option value="Booked">Booked</option>
-        </select>
+        {/* Room Status */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Status</label>
+          <select
+            name="roomStatus"
+            value={stayStatus}
+            onChange={(e) => setStayStatus(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none bg-[#002428] text-white"
+          >
+            <option value="Available" className="bg-green">
+              Available
+            </option>
+            <option value="Booked" className="bg-green">
+              Booked
+            </option>
+          </select>
+        </div>
 
+        {/* Buttons */}
         <div className="flex justify-between mx-10 gap-6">
           <button
             type="button"

@@ -7,6 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import { addAdventure } from "../../Utils/adventureSlice";
 import AddNewAdventure from "./AddNewAdventure";
 import EditAdventure from "./EditAdventure";
+import { toast } from "react-toastify";
 
 const Adventure = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +26,7 @@ const Adventure = () => {
       const res = await axios.get(BASE_URL + "/admin/listAdventure", {
         withCredentials: true,
       });
-      console.log(res?.data);
+      // console.log(res?.data);
       dispatch(addAdventure(res?.data));
     } catch (error) {
       console.error("Error fetching adventures:", error);
@@ -42,9 +43,11 @@ const Adventure = () => {
       await axios.delete(BASE_URL + "/admin/deleteAdventure/" + id, {
         withCredentials: true,
       });
-      window.location.reload();
+      toast.success("Adventure deleted successfully!");
+            setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
       console.error("Error deleting adventure:", error);
+      toast.error("Failed to delete Adventure.!");
     }
   };
 
@@ -55,7 +58,7 @@ const Adventure = () => {
 
   return (
     <div className="relative">
-      <div className="px-4 flex flex-col md:flex-row  gap-4 items-center justify-between py-2 mb-8">
+      <div className="px-4 flex flex-col md:flex-row  gap-4 items-center justify-between py-2 mb-8 font-robotoLight">
         <button
           onClick={() => setIsModalOpen(true)}
           className="rounded-md bg-[#FC3200] px-4 py-2 hover:scale-105 transition-all duration-300 cursor-pointer text-white"
@@ -129,7 +132,8 @@ const Adventure = () => {
 
             {/* Edit Modal */}
             {editId === adv._id && (
-              <EditAdventure adv ={adv}
+              <EditAdventure
+                adv={adv}
                 setIsEditOpen={() => setEditId(null)}
                 id={adv._id}
                 NameHead={adv.advName}

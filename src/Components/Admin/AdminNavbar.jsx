@@ -61,9 +61,10 @@ const AdminNavbar = () => {
           <img src={logo} alt="App Logo" className="md:w-10 w-8 " />
           {isExpanded && (
             <>
-
-            <h1 className=" font-bold text-nowrap">Campfire Cove</h1>
-          <span className="absolute bottom-0 right-0 font-paintBrush text-orange text-xl rotate-350">Resort</span>
+              <h1 className=" font-bold text-nowrap">Campfire Cove</h1>
+              <span className="absolute bottom-0 right-0 font-paintBrush text-orange text-xl rotate-350">
+                Resort
+              </span>
             </>
           )}
         </div>
@@ -116,7 +117,9 @@ const AdminNavbar = () => {
           }
         >
           <FaMountain size={20} />
-          {isExpanded && <span>Adventures</span>}
+          {isExpanded && (
+            <span >Adventures</span>
+          )}
         </NavLink>
       </nav>
 

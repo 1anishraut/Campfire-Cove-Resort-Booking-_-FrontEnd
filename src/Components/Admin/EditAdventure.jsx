@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../Utils/Constants";
+import { toast } from "react-toastify";
 
 const EditAdventure = ({ setIsEditOpen, NameHead, id, adv }) => {
   const [advName, setAdvName] = useState(adv?.advName || "");
@@ -33,57 +34,84 @@ const EditAdventure = ({ setIsEditOpen, NameHead, id, adv }) => {
         },
         { withCredentials: true }
       );
-      window.location.reload();
+      toast.success("Adventure edited successfully!");
+            setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
-      console.error("Error updating adventure:", error);
+      toast.error("Error editing");
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000e1] backdrop-blur-xs text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000e1] backdrop-blur-xs text-white font-robotoLight">
       <form
         className="bg-[#002428] p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-xl font-bold mb-4">
+        <h2 className="text-xl font-bold mb-4 text-white">
           Edit Adventure <br /> {NameHead}
         </h2>
 
-        <input
-          type="text"
-          name="advName"
-          placeholder="Adventure Name"
-          value={advName}
-          onChange={(e) => setAdvName(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Adventure Name */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Adventure Name
+          </label>
+          <input
+            type="text"
+            name="advName"
+            value={advName}
+            onChange={(e) => setAdvName(e.target.value)}
+            className="w-full border p-2 rounded bg-transparent text-white outline-none focus:outline-none focus:ring-0"
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          name="advPrice"
-          placeholder="Adventure Price"
-          value={advPrice}
-          onChange={(e) => setAdvPrice(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Adventure Price */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Adventure Price (₹)
+          </label>
+          <input
+            type="number"
+            name="advPrice"
+            value={advPrice}
+            onChange={(e) => setAdvPrice(e.target.value)}
+            className="w-full border p-2 rounded bg-transparent text-white outline-none focus:outline-none focus:ring-0"
+            min="0"
+            required
+          />
+        </div>
 
-        <input
-          type="text"
-          name="advImage"
-          placeholder="Adventure Image URL"
-          value={advImage}
-          onChange={(e) => setAdvImage(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Adventure Image */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Adventure Image URL
+          </label>
+          <input
+            type="text"
+            name="advImage"
+            value={advImage}
+            onChange={(e) => setAdvImage(e.target.value)}
+            className="w-full border p-2 rounded bg-transparent text-white outline-none focus:outline-none focus:ring-0"
+            
+          />
+        </div>
 
-        <textarea
-          name="advDescription"
-          placeholder="Adventure Description"
-          value={advDescription}
-          onChange={(e) => setAdvDescription(e.target.value)}
-          className="mb-3 w-full border p-2 rounded min-h-[100px]"
-        />
+        {/* Adventure Description */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200 font-medium">
+            Adventure Description
+          </label>
+          <textarea
+            name="advDescription"
+            value={advDescription}
+            onChange={(e) => setAdvDescription(e.target.value)}
+            className="w-full border p-2 rounded bg-transparent text-white outline-none focus:outline-none focus:ring-0 min-h-[100px]"
+            required
+          />
+        </div>
 
+        {/* Buttons */}
         <div className="flex justify-between mx-10 gap-6">
           <button
             type="button"

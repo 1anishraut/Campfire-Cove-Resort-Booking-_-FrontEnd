@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../../Utils/Constants";
 import { useDispatch } from "react-redux";
 import { addStay } from "../../Utils/staySlice";
+import { toast } from "react-toastify";
 
 const AddNewStay = ({ setIsModalOpen }) => {
   const [stayName, setStayName] = useState("");
@@ -10,12 +11,12 @@ const AddNewStay = ({ setIsModalOpen }) => {
   const [stayImage, setStayImage] = useState("");
   const [staySize, setStaySize] = useState("");
   const [stayDescription, setStayDescription] = useState("");
-  const [stayStatus, setStayStatus] = useState("");
+  const [stayStatus, setStayStatus] = useState("Available");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      await axios.post(
         BASE_URL + "/admin/addStays",
         {
           roomName: stayName,
@@ -27,80 +28,105 @@ const AddNewStay = ({ setIsModalOpen }) => {
         },
         { withCredentials: true }
       );
-      window.location.reload();
-
-      alert("Room added successfully!");
+       toast.success("New Stay added successfully!");
+       setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
-      console.error("Error adding room:", error);
-      alert("Failed to add room. Make sure you are logged in as admin.");
+      console.error("Error adding Stay:", error);
+      toast.error("Failed to add stay. Make sure you are logged in as admin.");
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 font-robotoLight">
       <form
-        className="bg-[#002428]/90 p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
+        className="scrollbar-hide bg-[#002428]/90 p-6 rounded-md shadow-md w-full max-w-md overflow-y-auto max-h-[90vh]"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-xl font-bold mb-4">Add New Stay</h2>
+        <h2 className="text-xl font-bold mb-4 text-white">Add New Stay</h2>
 
-        <input
-          type="text"
-          name="roomName"
-          placeholder="Stay Name"
-          value={stayName}
-          onChange={(e) => setStayName(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Stay Name */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Stay Name</label>
+          <input
+            type="text"
+            name="roomName"
+            value={stayName}
+            onChange={(e) => setStayName(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          name="roomPrice"
-          placeholder="Room Price"
-          value={stayPrice}
-          onChange={(e) => setStayPrice(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-          required
-        />
+        {/* Room Price */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Price (₹)</label>
+          <input
+            type="number"
+            name="roomPrice"
+            value={stayPrice}
+            min="0"
+            onChange={(e) => setStayPrice(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <input
-          type="text"
-          name="roomImage"
-          placeholder="Room Image URL"
-          value={stayImage}
-          onChange={(e) => setStayImage(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Image */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Image URL</label>
+          <input
+            type="text"
+            name="roomImage"
+            value={stayImage}
+            onChange={(e) => setStayImage(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="roomSize"
-          placeholder="Room Size"
-          value={staySize}
-          onChange={(e) => setStaySize(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Size */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">
+            Room Size ( sq.ft )
+          </label>
+          <input
+            type="text"
+            name="roomSize"
+            value={staySize}
+            onChange={(e) => setStaySize(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none"
+            required
+          />
+        </div>
 
-        <textarea
-          name="roomDescription"
-          placeholder="Room Description"
-          value={stayDescription}
-          onChange={(e) => setStayDescription(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        />
+        {/* Room Description */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Description</label>
+          <textarea
+            name="roomDescription"
+            value={stayDescription}
+            onChange={(e) => setStayDescription(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none min-h-[100px]"
+            required
+          />
+        </div>
 
-        <select
-          name="roomStatus"
-          value={stayStatus}
-          onChange={(e) => setStayStatus(e.target.value)}
-          className="mb-3 w-full border p-2 rounded"
-        >
-          <option value="Available">Available</option>
-          <option value="Booked">Booked</option>
-        </select>
+        {/* Room Status */}
+        <div className="mb-3">
+          <label className="block mb-1 text-gray-200">Room Status</label>
+          <select
+            name="roomStatus"
+            value={stayStatus}
+            onChange={(e) => setStayStatus(e.target.value)}
+            className="w-full border border-gray-600 p-2 rounded focus:outline-none bg-[#002428] text-white"
+            required
+          >
+            <option value="Available">Available</option>
+            <option value="Booked">Booked</option>
+          </select>
+        </div>
 
-        <div className="flex justify-between mx-10 gap-6">
+        {/* Buttons */}
+        <div className="flex justify-between mx-10 gap-6 mt-4">
           <button
             type="button"
             onClick={() => setIsModalOpen(false)}

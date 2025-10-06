@@ -28,6 +28,7 @@ export default function LandingPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,6 +42,13 @@ export default function LandingPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const checkInDate = new Date(checkIn);
+    const checkOutDate = new Date(checkOut);
+
+    if (checkOutDate <= checkInDate) {
+      alert("Check-out must be after check-in");
+      return;
+    }
 
     dispatch(
       setBookingDates({
@@ -103,6 +111,7 @@ export default function LandingPage() {
                   selectsStart
                   startDate={checkIn}
                   endDate={checkOut}
+                   dateFormat="dd/MM/yyyy"
                   placeholderText="CHECK-IN"
                   className="bg-transparent text-white text-center w-28 focus:outline-none cursor-pointer "
                   calendarClassName="!bg-white"
@@ -125,6 +134,7 @@ export default function LandingPage() {
                   selectsEnd
                   startDate={checkIn}
                   endDate={checkOut}
+                   dateFormat="dd/MM/yyyy"
                   placeholderText="CHECK-OUT"
                   className="bg-transparent text-white text-center w-28 focus:outline-none cursor-pointer"
                   calendarClassName="!bg-white"
