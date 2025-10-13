@@ -24,17 +24,17 @@ A full-stack MERN web application for booking luxury resort stays. It features a
 
 ## Features
 
-- 🏕️ Dynamic Home Page: Showcases resorts, stays, and adventure packages with high-quality images and smooth UI.
+- 🏕️ Dynamic Home Page: Showcases resorts, stays, and adventure packages with smooth UI.
 
 - 💳 Online Payment Integration: Integrated Razorpay Payment Gateway for secure and seamless online booking.
 
 - 🧾 Admin Dashboard: Manage bookings, update stay/adventure prices, and monitor customer details efficiently.
 
-- ⚡ Optimized Performance: Reduced page loading time to under 300ms for a faster browsing experience.
+- ⚡ Optimized Performance: Reduced page loading time and faster browsing experience.
 
-- 🔐 Secure Authentication: Implemented using JWT Authentication for safe and verified user access.
+- 🔐 Secure Authentication: Implemented using JWT Authentication.
 
-- 📱 Responsive Design: Fully optimized for all devices using Tailwind CSS.
+- 📱 Responsive Design: Fully optimized for all devices.
 
 ## Screenshots
 <div align="center" style="display: flex; justify-content: center; gap: 20px;"> 
