@@ -47,4 +47,7 @@ A full-stack MERN web application for booking luxury resort stays. It features a
   
 ## Screenshots
 
-<div align="center" style="display: flex; justify-content: center; gap: 20px;"> <img src="https://1anishraut.github.io/Anish_Portfolio/assets/campfire-laptop-Ny9mi1gn.png" alt="Campfire Laptop View" width="500"/> <img src="https://1anishraut.github.io/Anish_Portfolio/assets/Campfire-portrait-Dx4fv7Yw.png" alt="Campfire Mobile View" width="230"/> </div>
+<div align="center" style="display: flex; justify-content: center; gap: 20px;"> 
+  <img src="https://1anishraut.github.io/Anish_Portfolio/assets/campfire-laptop-Ny9mi1gn.png" alt="Campfire Laptop View" width="500"/> 
+  <img src="https://1anishraut.github.io/Anish_Portfolio/assets/Campfire-portrait-Dx4fv7Yw.png" alt="Campfire Mobile View" width="230"/> 
+</div>
