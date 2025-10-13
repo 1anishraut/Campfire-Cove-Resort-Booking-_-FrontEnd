@@ -1,14 +1,9 @@
-
-
 # Project Title
 Campfire Cove Resort Booking
 
 # Description
 
 A full-stack MERN web application for booking luxury resort stays. It features a dynamic frontend built with React.js and Tailwind CSS and secure backend APIs powered by Node.js, Express, and MongoDB. Users can explore stays, view amenities, and make online payments seamlessly.
-
-
-
 
 ## Tech Stack
 
@@ -25,9 +20,7 @@ A full-stack MERN web application for booking luxury resort stays. It features a
 
 ### 🛠️ Admin Flow
 <img src="https://github.com/1anishraut/Campfire-Cove-Resort-Booking-_-FrontEnd/blob/main/public/Campfire_DFD_Admin.jpg?raw=true" alt="Admin DFD" width="900"/>
-
 </div>
-
 
 ## Features
 
@@ -43,10 +36,7 @@ A full-stack MERN web application for booking luxury resort stays. It features a
 
 - 📱 Responsive Design: Fully optimized for all devices using Tailwind CSS.
 
-- 🎞️ Smooth Animations: Built with GSAP/Motion to enhance interactivity and user engagement.
-  
 ## Screenshots
-
 <div align="center" style="display: flex; justify-content: center; gap: 20px;"> 
   <img src="https://1anishraut.github.io/Anish_Portfolio/assets/campfire-laptop-Ny9mi1gn.png" alt="Campfire Laptop View" width="500"/> 
   <img src="https://1anishraut.github.io/Anish_Portfolio/assets/Campfire-portrait-Dx4fv7Yw.png" alt="Campfire Mobile View" width="230"/> 
