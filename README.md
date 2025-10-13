@@ -1,15 +1,50 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Project Title
+Campfire Cove Resort Booking
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Description
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+A full-stack MERN web application for booking luxury resort stays. It features a dynamic frontend built with React.js and Tailwind CSS and secure backend APIs powered by Node.js, Express, and MongoDB. Users can explore stays, view amenities, and make online payments seamlessly.
 
 
 
+
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS, Motion, 
+
+**Server:** Node, Express, MongoDB, Mongoose,
+
+## 🧩 Data Flow Diagram (DFD)
+
+<div align="center">
+
+### 🧑‍💻 User Flow
+<img src="https://github.com/1anishraut/Campfire-Cove-Resort-Booking-_-FrontEnd/blob/main/public/Campfire_DFD_User.jpg?raw=true" alt="User DFD" width="900"/>
+
+### 🛠️ Admin Flow
+<img src="https://github.com/1anishraut/Campfire-Cove-Resort-Booking-_-FrontEnd/blob/main/public/Campfire_DFD_Admin.jpg?raw=true" alt="Admin DFD" width="900"/>
+
+</div>
+
+
+## Features
+
+- 🏕️ Dynamic Home Page: Showcases resorts, stays, and adventure packages with high-quality images and smooth UI.
+
+- 💳 Online Payment Integration: Integrated Razorpay Payment Gateway for secure and seamless online booking.
+
+- 🧾 Admin Dashboard: Manage bookings, update stay/adventure prices, and monitor customer details efficiently.
+
+- ⚡ Optimized Performance: Reduced page loading time to under 300ms for a faster browsing experience.
+
+- 🔐 Secure Authentication: Implemented using JWT Authentication for safe and verified user access.
+
+- 📱 Responsive Design: Fully optimized for all devices using Tailwind CSS.
+
+- 🎞️ Smooth Animations: Built with GSAP/Motion to enhance interactivity and user engagement.
+  
+## Screenshots
+
+<div align="center" style="display: flex; justify-content: center; gap: 20px;"> <img src="https://1anishraut.github.io/Anish_Portfolio/assets/campfire-laptop-Ny9mi1gn.png" alt="Campfire Laptop View" width="500"/> <img src="https://1anishraut.github.io/Anish_Portfolio/assets/Campfire-portrait-Dx4fv7Yw.png" alt="Campfire Mobile View" width="230"/> </div>
